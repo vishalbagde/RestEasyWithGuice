@@ -1,0 +1,23 @@
+plugins{
+	id  'org.gretty' version '2.2.0'
+	id  'java'
+	id  'war'
+	id  'application'
+	id  'eclipse'
+} 
+
+project.webAppDirName = 'src/main/webapp'
+mainClassName = 'demo.Main'
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+dependencies{
+	
+	compile group: 'org.jboss.resteasy', name: 'resteasy-guice', version: '3.6.0.Final'
+	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.3.Final'
+	compile group: 'org.postgresql', name: 'postgresql', version: '42.2.4'
+	compile group: 'com.google.inject.extensions', name: 'guice-persist', version: '4.2.0'
+	compile group: 'com.google.inject.extensions', name: 'guice-servlet', version: '4.2.0'
+	providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+}
