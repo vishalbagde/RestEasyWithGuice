@@ -33,7 +33,7 @@ public class Person {
 	@ManyToOne
 	Address address;
 	
-	@OneToMany (fetch = FetchType.EAGER,orphanRemoval = true)
+	@OneToMany (orphanRemoval = true)
 	List<Phone> phone=new ArrayList<Phone>();
 
 	public Person(int person_id, PersonName personName, String email, Address address,

@@ -20,4 +20,9 @@ dependencies{
 	compile group: 'com.google.inject.extensions', name: 'guice-persist', version: '4.2.0'
 	compile group: 'com.google.inject.extensions', name: 'guice-servlet', version: '4.2.0'
 	providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+	
+	compile 'org.jboss.resteasy:resteasy-jackson-provider:3.6.0.Final' //JSON
+	compile 'org.jboss.resteasy:resteasy-jaxb-provider:3.6.0.Final'//xml
+	compile 'org.jboss.resteasy:resteasy-html:3.6.0.Final' //html
+	compile 'org.jboss.resteasy:resteasy-jaxrs:3.6.0.Final'
 }

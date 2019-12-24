@@ -28,6 +28,13 @@ public class Phone {
 	public Phone() {
 		super();
 	}
+	
+	public Phone(String phone_type, String service_provider, Contact contact) {
+		super();
+		this.phone_type = phone_type;
+		this.service_provider = service_provider;
+		this.contact = contact;
+	}
 	public Phone(int phone_id, String phone_type, String service_provider, Contact contact) {
 		super();
 		this.phone_id = phone_id;
