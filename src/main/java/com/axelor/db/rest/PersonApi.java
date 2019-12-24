@@ -1,14 +1,20 @@
 package com.axelor.db.rest;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -35,14 +41,14 @@ public class PersonApi {
 	
 	@POST
 	@Path("/insert")
-	public Response insertData(@FormParam("fname") String fname ,
+	public void insertData(@FormParam("fname") String fname ,
 			@FormParam("mname") String mname ,
 			@FormParam("lname") String lname ,
-			@FormParam("email") String email )
+			@FormParam("email") String email, @Context HttpServletRequest request,@Context HttpServletResponse response ) throws IOException
 	{
 		Person p = new Person(new PersonName(fname,mname,lname),email);
 		personservice.insertPerson(p);
-		return Response.status(200).entity("Insert successful").build();
+		response.sendRedirect("./getAll");
 	}
 	@GET
 	@Path("/get/{person_id}")
@@ -70,11 +76,11 @@ public class PersonApi {
 	
 	@POST
 	@Path("/update/{person_id}")
-	public Response updateData(@FormParam("fname") String fname ,
+	public void updateData(@FormParam("fname") String fname ,
 			@FormParam("mname") String mname ,
 			@FormParam("lname") String lname ,
 			@FormParam("email") String email ,
-			@PathParam("person_id") int person_id)
+			@PathParam("person_id") int person_id,@Context HttpServletRequest request,@Context HttpServletResponse response) throws IOException
 	{
 		Person p = personservice.findPerson(person_id);
 		PersonName pname=p.getPersonName();
@@ -83,17 +89,23 @@ public class PersonApi {
 		pname.setMname(mname);
 		pname.setLname(lname);
 		personservice.updatePerson(p);
-		return Response.status(200).entity("Update successful").build();
+		response.sendRedirect("../getAll");
 	}
 	
 	@GET
 	@Path("/delete/{person_id}")
-	public View deleteData(@PathParam("person_id") int person_id)
+	public void deleteData(@PathParam("person_id") int person_id,@Context HttpServletRequest request,@Context HttpServletResponse response) throws IOException
 	{
 		Person p = personservice.findPerson(person_id);
+		List<Phone> phoneList = p.getPhone();
+		for(Phone phone:phoneList)
+		{
+			phoneservice.deletePhone(phone);
+		}
+		
 		personservice.deletePerson(p);
 		//return Response.status(200).entity("Delete successful").build();
-		return this.getDataAll();
+		response.sendRedirect("../getAll");
 	}
 	
 	@GET
@@ -120,18 +132,15 @@ public class PersonApi {
 	{
 		Person p = personservice.findPerson(person_id);
 		
-		List<Phone> phone=p.getPhone();
+		//List<Phone> phone=p.getPhone();
+		
+		
 		Contact c=new Contact();
 		c.setPhone_no(cno);
+		Phone ph=new Phone(ptype,ser_pro,c,p);
 		contactservice.insertContact(c);
-		
-		Phone ph=new Phone(0,ptype,ser_pro,c);
+				
 		phoneservice.insertPhone(ph);
-	
-		phone.add(ph);
-		
-		p.setPhone(phone);
-
 		personservice.updatePerson(p);
 		return Response.status(200).entity("Contact Added successful").build();
 	}
@@ -143,5 +152,48 @@ public class PersonApi {
 		Person p = personservice.findPerson(person_id);
 		
 		return new View("/contactDisplay.jsp",p,"contactData");
-	}	
+	}
+	
+	@GET
+	@Path("/personContactFetch/{phone_id}")
+	public void personContactFetch(@Context HttpServletRequest request ,@Context HttpServletResponse response,@PathParam("phone_id") int phone_id) throws ServletException, IOException
+	{
+		Phone phone = phoneservice.findPhone(phone_id);
+		
+		request.setAttribute("phone_id", phone_id);
+		request.setAttribute("phone_obj",phone);
+		request.getRequestDispatcher("../updateContact.jsp").forward(request, response);
+	}
+	
+	@POST
+	@Path("/updateContact")
+	public void updateContact(@Context HttpServletRequest request,@Context HttpServletResponse response) throws IOException
+	{
+		
+		Phone phone =phoneservice.findPhone(Integer.parseInt(request.getParameter("phone_id")));
+		phone.setPhone_type(request.getParameter("phone_type"));
+		phone.setService_provider(request.getParameter("service_provider"));
+		Contact c = phone.getContact();
+		c.setPhone_no(request.getParameter("contact_no"));
+		contactservice.updateContact(c);
+
+		phoneservice.updatePhone(phone);
+		
+		//List<Phone> phone=p.getPhone();
+		
+		/*
+		Contact c=new Contact();
+		c.setPhone_no(cno);
+		Phone ph=new Phone(ptype,ser_pro,c,p);
+		contactservice.insertContact(c);
+				
+		phoneservice.insertPhone(ph);
+	
+
+		personservice.updatePerson(p);
+		*/
+		
+		response.sendRedirect("./getAll");
+		
+	}
 }

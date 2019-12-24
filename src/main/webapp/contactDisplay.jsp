@@ -24,6 +24,7 @@
 		<th>Phone Type</th>
 		<th>Service Provider</th>
 		<th>Contact No</th>
+		<th>Update</th>
 		<%
 			for (Phone phone : list) {
 				out.print("<tr>");
@@ -32,7 +33,7 @@
 				out.print("<td>"+phone.getPhone_type()+"</td>");
 				out.print("<td>"+phone.getService_provider()+"</td>");
 				out.print("<td>"+c.getPhone_no()+"</td>");
-				
+				out.print("<td><a href='"+getServletContext().getInitParameter("url")+"personContactFetch/"+phone.getPhone_id()+"'>Update</a></td>");
 				out.print("</tr>");
 				
 		
@@ -41,7 +42,7 @@
 		%>
 		
 	</table>
-	 <a href="<%=getServletContext().getInitParameter("url")%>ws/getAll" align="center">Back</a></td>
+	 <a href="<%=getServletContext().getInitParameter("url")%>getAll" align="center">Back</a></td>
 	
 
 <%@include file="footer.jsp"%>

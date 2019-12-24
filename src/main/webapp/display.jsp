@@ -38,10 +38,10 @@
 				out.print("<td>"+pname.getMname()+"</td>");
 				out.print("<td>"+pname.getLname()+"</td>");
 				out.print("<td>"+person.getEmail()+"</td>");
-				out.print("<td><a href='"+getServletContext().getInitParameter("url")+"ws/getContact/"+person.getPerson_id()+"'>show Contact</a></td>");
+				out.print("<td><a href='"+getServletContext().getInitParameter("url")+"getContact/"+person.getPerson_id()+"'>show Contact</a></td>");
 				out.print("<td><a href='"+getServletContext().getInitParameter("url")+"contact.jsp?person_id="+person.getPerson_id()+"'>Add Contact</a></td>");
-				out.print("<td><a href='"+getServletContext().getInitParameter("url")+"ws/personUpdateFetch/"+person.getPerson_id()+"'>Update</a></td>");
-				out.print("<td><a href='"+getServletContext().getInitParameter("url")+"ws/delete/"+person.getPerson_id()+"'>Delete</a></td>");
+				out.print("<td><a href='"+getServletContext().getInitParameter("url")+"personUpdateFetch/"+person.getPerson_id()+"'>Update</a></td>");
+				out.print("<td><a href='"+getServletContext().getInitParameter("url")+"delete/"+person.getPerson_id()+"'>Delete</a></td>");
 				out.print("</tr>");
 				
 				

@@ -26,14 +26,13 @@ public class Person {
 	@GeneratedValue(generator = "person_sequence",strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(sequenceName = "person_sequence",allocationSize = 1,initialValue = 0, name = "person" )
 	int person_id;
-	String person_key;
 	PersonName personName;
 	String email;
 	
 	@ManyToOne
 	Address address;
 	
-	@OneToMany (orphanRemoval = true)
+	@OneToMany (mappedBy = "person")
 	List<Phone> phone=new ArrayList<Phone>();
 
 	public Person(int person_id, PersonName personName, String email, Address address,

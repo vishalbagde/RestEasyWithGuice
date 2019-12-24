@@ -8,9 +8,9 @@
 </head>
 <body>
 
-	<form method="post" action="<%=getServletContext().getInitParameter("url")+"ws/addContact" %>">
+	<form method="post" action="<%=getServletContext().getInitParameter("url")+"addContact" %>">
 
-		<table border=1 width="500px" action="ws/contactAdd" align="center">
+		<table border=1 width="500px" action="contactAdd" align="center">
 			<tr>
 				<th colspan="2">Person Contact Add</th>
 				<input type="hidden" name="person_id" value="<%=request.getParameter("person_id")%>" />
@@ -42,7 +42,7 @@
 				<td><input type="submit" name="submit" value="Add" /> <input
 					type="reset" name="reset" value="reset" />
 					
-					 <a href="ws/getAll" align="center">Back</a></td>
+					 <a href="getAll" align="center">Back</a></td>
 
 				</td>
 

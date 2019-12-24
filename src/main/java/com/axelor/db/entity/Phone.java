@@ -5,7 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.ManyToAny;
 @Entity
 public class Phone {
 	
@@ -19,6 +22,8 @@ public class Phone {
 	@OneToOne(cascade = CascadeType.REMOVE)
 	Contact contact;
 	
+	@ManyToOne
+	Person person;
 
 	@Override
 	public String toString() {
@@ -29,11 +34,12 @@ public class Phone {
 		super();
 	}
 	
-	public Phone(String phone_type, String service_provider, Contact contact) {
+	public Phone(String phone_type, String service_provider, Contact contact,Person person) {
 		super();
 		this.phone_type = phone_type;
 		this.service_provider = service_provider;
 		this.contact = contact;
+		this.person=person;
 	}
 	public Phone(int phone_id, String phone_type, String service_provider, Contact contact) {
 		super();

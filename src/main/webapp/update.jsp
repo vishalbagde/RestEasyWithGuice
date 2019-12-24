@@ -12,7 +12,7 @@
 
 <% Person person = (Person)request.getAttribute("personData");
 	PersonName pname=person.getPersonName();
-	String updatestr = getServletContext().getInitParameter("url")+"ws/update/"+person.getPerson_id();
+	String updatestr = getServletContext().getInitParameter("url")+"update/"+person.getPerson_id();
 		
 	//String url =request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 	

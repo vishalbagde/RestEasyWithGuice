@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form method="post"
-		action="ws/insert">
+		action="insert">
 		<%@include file="header.jsp"%>
 		<table border=1 width="500px">
 			<tr>
