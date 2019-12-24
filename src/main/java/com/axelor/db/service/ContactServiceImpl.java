@@ -5,8 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import com.axelor.db.entity.Contact;
-import com.axelor.db.entity.Person;
+import com.axelor.db.Contact;
+import com.axelor.db.Person;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.persist.Transactional;

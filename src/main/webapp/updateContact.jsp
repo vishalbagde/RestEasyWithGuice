@@ -1,5 +1,5 @@
-<%@page import="com.axelor.db.entity.Contact"%>
-<%@page import="com.axelor.db.entity.Phone"%>
+<%@page import="com.axelor.db.Contact"%>
+<%@page import="com.axelor.db.Phone"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,10 +13,9 @@
 
 <% int phone_id=(int)request.getAttribute("phone_id"); 
 	Phone phone = (Phone)request.getAttribute("phone_obj");
-	out.println(phone.getService_provider());
 	Contact contact=phone.getContact();
 %>
-<%=phone_id %>
+
 
 
 

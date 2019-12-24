@@ -2,7 +2,7 @@ package com.axelor.db.service;
 
 import java.util.List;
 
-import com.axelor.db.entity.Contact;
+import com.axelor.db.Contact;
 
 public interface ContactService {
 	public void insertContact(Contact contact);

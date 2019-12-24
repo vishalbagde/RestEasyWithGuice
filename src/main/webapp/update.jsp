@@ -1,5 +1,5 @@
-<%@page import="com.axelor.db.entity.PersonName"%>
-<%@page import="com.axelor.db.entity.Person"%>
+<%@page import="com.axelor.db.PersonName"%>
+<%@page import="com.axelor.db.Person"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

@@ -2,7 +2,7 @@ package com.axelor.db.service;
 
 import java.util.List;
 
-import com.axelor.db.entity.Person;;
+import com.axelor.db.Person;;
 
 public interface PersonService {
 	

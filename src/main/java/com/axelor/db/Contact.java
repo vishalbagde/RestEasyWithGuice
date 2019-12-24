@@ -1,4 +1,4 @@
-package com.axelor.db.entity;
+package com.axelor.db;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

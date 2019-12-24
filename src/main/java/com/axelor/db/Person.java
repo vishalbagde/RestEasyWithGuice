@@ -1,4 +1,4 @@
-package com.axelor.db.entity;
+package com.axelor.db;
 
 import java.util.ArrayList;
 import java.util.List;

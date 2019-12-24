@@ -1,4 +1,4 @@
-package com.axelor.db.rest;
+package com.axelor.db.rest;	
 
 import java.io.IOException;
 import java.util.List;
@@ -7,28 +7,24 @@ import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.Consumes;
+
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Request;
+
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
 import org.jboss.resteasy.plugins.providers.html.View;
-
-import com.axelor.db.entity.Address;
-import com.axelor.db.entity.Contact;
-import com.axelor.db.entity.Person;
-import com.axelor.db.entity.PersonName;
-import com.axelor.db.entity.Phone;
+import com.axelor.db.Contact;
+import com.axelor.db.Person;
+import com.axelor.db.PersonName;
+import com.axelor.db.Phone;
 import com.axelor.db.service.ContactService;
 import com.axelor.db.service.PersonService;
 import com.axelor.db.service.PhoneService;
-import com.google.inject.persist.PersistService;
+
 
 @Path("/")
 public class PersonApi {
@@ -108,21 +104,7 @@ public class PersonApi {
 		response.sendRedirect("../getAll");
 	}
 	
-	@GET
-	@Path("/getPersonForSelect")
-	public Response getPersonForSelect()
-	{
-		String data="";
-		List<Person> plist = personservice.getAllPerson();
-		for (Person person : plist) {
-			Address address = person.getAddress();
-			if(address!=null)
-				data +="<option value='"+address.getAddress_id()+"'>"+address.getPloat_no()+"-"+address.getArea()+"</option>";
-		}
-		System.out.println(data);
-		return Response.status(200).entity(data).build();
-	}
-	
+		
 	@POST
 	@Path("/addContact")
 	public Response addContact(@FormParam("phone_type") String ptype,

@@ -1,7 +1,7 @@
-<%@page import="com.axelor.db.entity.Person"%>
-<%@page import="com.axelor.db.entity.Contact"%>
+<%@page import="com.axelor.db.Person"%>
+<%@page import="com.axelor.db.Contact"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.axelor.db.entity.Phone"%>
+<%@page import="com.axelor.db.Phone"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

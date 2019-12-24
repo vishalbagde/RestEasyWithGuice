@@ -2,7 +2,7 @@ package com.axelor.db.service;
 
 import java.util.List;
 
-import com.axelor.db.entity.Phone;
+import com.axelor.db.Phone;
 
 public interface PhoneService {
 	
