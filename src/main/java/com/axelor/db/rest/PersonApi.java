@@ -61,6 +61,19 @@ public class PersonApi {
 		List<Person> p = personservice.getAllPerson();
 		return new View("/display.jsp",p,"personData");    
 	}
+	
+	
+	
+	@GET
+	@Path("/getSearch")
+	public View getDataBySearch(@Context HttpServletRequest request,@Context HttpServletResponse response)
+	{	
+		List<Person> p = personservice.getPersonBySearch(request.getParameter("name"));
+		return new View("../display.jsp",p,"personData");    
+	}
+	
+	
+	
 	@GET
 	@Path("/personUpdateFetch/{person_id}")
 	public View getDataAll(@PathParam("person_id") int person_id)

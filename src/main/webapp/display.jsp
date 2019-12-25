@@ -4,6 +4,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +15,22 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-<%@include file="header.jsp"%>
-	<div class="data"></div>
+	<%@include file="header.jsp"%>
+	<form method="post" action="getSearch">
+		<table border=1 width="500px">
+			<tr>
+				<th colspan="2">Person Details Search</th>
+			<tr>
+				<td>Enter Name</td>
+				<td><input type="text" name="name" /></td>
+			</tr>
+			<tr>
+				<td>
+				<td><input type="submit" name="submit" value="Search" /> 
+				</td>
+			</tr>
+		</table>
+	</form>
 	<%
 		List<Person> list = (ArrayList<Person>) request.getAttribute("personData");
 	%>
@@ -33,25 +48,24 @@
 			for (Person person : list) {
 				out.print("<tr>");
 				PersonName pname = person.getPersonName();
-				out.print("<td>"+person.getPerson_id()+"</td>");
-				out.print("<td>"+pname.getFname()+"</td>");
-				out.print("<td>"+pname.getMname()+"</td>");
-				out.print("<td>"+pname.getLname()+"</td>");
-				out.print("<td>"+person.getEmail()+"</td>");
-				out.print("<td><a href='"+getServletContext().getInitParameter("url")+"getContact/"+person.getPerson_id()+"'>show Contact</a></td>");
-				out.print("<td><a href='"+getServletContext().getInitParameter("url")+"contact.jsp?person_id="+person.getPerson_id()+"'>Add Contact</a></td>");
-				out.print("<td><a href='"+getServletContext().getInitParameter("url")+"personUpdateFetch/"+person.getPerson_id()+"'>Update</a></td>");
-				out.print("<td><a href='"+getServletContext().getInitParameter("url")+"delete/"+person.getPerson_id()+"'>Delete</a></td>");
+				out.print("<td>" + person.getPerson_id() + "</td>");
+				out.print("<td>" + pname.getFname() + "</td>");
+				out.print("<td>" + pname.getMname() + "</td>");
+				out.print("<td>" + pname.getLname() + "</td>");
+				out.print("<td>" + person.getEmail() + "</td>");
+				out.print("<td><a href='" + getServletContext().getInitParameter("url") + "getContact/"
+						+ person.getPerson_id() + "'>show Contact</a></td>");
+				out.print("<td><a href='" + getServletContext().getInitParameter("url") + "contact.jsp?person_id="
+						+ person.getPerson_id() + "'>Add Contact</a></td>");
+				out.print("<td><a href='" + getServletContext().getInitParameter("url") + "personUpdateFetch/"
+						+ person.getPerson_id() + "'>Update</a></td>");
+				out.print("<td><a href='" + getServletContext().getInitParameter("url") + "delete/"
+						+ person.getPerson_id() + "'>Delete</a></td>");
 				out.print("</tr>");
-				
-				
-				
 			}
 		%>
-		
 	</table>
-
-<%@include file="footer.jsp"%>
+	<%@include file="footer.jsp"%>
 </body>
 </html>
 

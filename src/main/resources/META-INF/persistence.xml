@@ -10,12 +10,12 @@
 		<!-- <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> -->
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:postgresql://localhost:5432/test" />
+				value="jdbc:postgresql://localhost:5432/axelor" />
 			<property name="javax.persistence.jdbc.driver"
 				value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.user" value="axelor" />
 			<property name="javax.persistence.jdbc.password"
-				value="axelor" />
+				value="bagde@123" />
 				
 			<property name="hibernate.hbm2ddl.auto" value="update" /> <!-- create / create-drop / update -->
 			<property name="hibernate.show_sql" value="true" /> <!-- Show SQL in console -->

@@ -53,5 +53,13 @@ public class PersonServiceImpl implements PersonService {
 		return q.getResultList();
 		
 	}
+	
+	@Override
+	public List<Person> getPersonBySearch(String name) {
+		Query q = em.get().createQuery("from Person where fname like :b").setParameter("b", name);
+		List<Person> list =q.getResultList();
+		return list;
+	
+	}
 
 }

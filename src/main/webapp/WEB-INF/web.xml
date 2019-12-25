@@ -19,7 +19,6 @@
            org.jboss.resteasy.plugins.server.servlet.FilterDispatcher
        </filter-class>
    </filter>
-
 <!--    
    <context-param>
 		<param-name>resteasy.servlet.mapping.prefix</param-name>
@@ -38,7 +37,7 @@
    
    <context-param>
         <param-name>url</param-name>
-        <param-value>http://localhost:8080/restEasyWithJpa/</param-value>
+        <param-value>http://localhost:8080/restWithGuiceDemo/</param-value>
     </context-param>	
 		
 

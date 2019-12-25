@@ -13,5 +13,7 @@ public interface PersonService {
 	public Person findPerson(int person_id);
 	public List<Person> getAllPerson();
 	
+	public List<Person> getPersonBySearch(String name);
+	
 
 }
