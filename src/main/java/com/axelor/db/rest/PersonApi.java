@@ -64,12 +64,13 @@ public class PersonApi {
 	
 	
 	
-	@GET
+	@POST
 	@Path("/getSearch")
 	public View getDataBySearch(@Context HttpServletRequest request,@Context HttpServletResponse response)
 	{	
-		List<Person> p = personservice.getPersonBySearch(request.getParameter("name"));
-		return new View("../display.jsp",p,"personData");    
+		System.out.println(request.getParameter("person_name"));
+		List<Person> p = personservice.getPersonBySearch(request.getParameter("person_name"));
+		return new View("/display.jsp",p,"personData");    
 	}
 	
 	
