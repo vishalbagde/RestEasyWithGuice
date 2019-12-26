@@ -37,7 +37,7 @@
    
    <context-param>
         <param-name>url</param-name>
-        <param-value>http://localhost:8080/restWithGuiceDemo/</param-value>
+        <param-value>http://localhost:8080/restEasyWithJpa/</param-value>
     </context-param>	
 		
 

@@ -22,7 +22,7 @@
 				<th colspan="2">Person Details Search</th>
 			<tr>
 				<td>Enter Name</td>
-				<td><input type="text" name="name" /></td>
+				<td><input type="text" name="person_name" /></td>
 			</tr>
 			<tr>
 				<td>
